@@ -9,7 +9,5 @@ git branch -M main
 # Загрузи код на GitHub
 git push -u origin main
 
-Пример:
-git remote add origin https://github.com/tanyaprov50-sudo/local_analytics-ai.git
-git branch -M main
-git push -u origin main
+Репозиторий успешно опубликован:
+https://github.com/tanyaprov50-sudo/local_analytics-ai

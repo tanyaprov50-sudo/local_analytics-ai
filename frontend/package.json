@@ -1,0 +1,6 @@
+{
+  "name": "analytics-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for local analytics system",
+  "private": true
+}

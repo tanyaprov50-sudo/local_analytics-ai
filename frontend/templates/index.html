@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Локальный Аналитик | AI Analytics</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Локальный Аналитик</h1>
+        <p class="subtitle">Полностью локальная аналитическая система с AI. Без облака, без ключей.</p>
+        
+        <form id="upload-form" enctype="multipart/form-data">
+            <div class="file-upload-wrapper">
+                <input type="file" name="file" id="file-input" accept=".xlsx, .xls, .csv, .pdf" required>
+                <div class="supported-formats">
+                    <span class="format-label">Поддерживаемые форматы:</span>
+                    <span class="format-badge">📊 CSV</span>
+                    <span class="format-badge">📗 Excel (XLS, XLSX)</span>
+                    <span class="format-badge">📄 PDF</span>
+                </div>
+            </div>
+            <button type="submit">📤 Загрузить и проанализировать</button>
+        </form>
+
+        <div id="results" class="hidden">
+            <h2>Результаты анализа</h2>
+            
+            <div id="table-container">
+                <h3>Данные из файла</h3>
+                <div id="data-table"></div>
+                <button id="load-more" class="hidden">Показать ещё 100 строк</button>
+            </div>
+
+            <div id="analytics-container">
+                <h3>Базовая аналитика</h3>
+                <div id="analytics-summary"></div>
+            </div>
+
+            <div id="pdf-export-section" class="hidden">
+                <button id="analyze-ai-btn">
+                    <span class="btn-text">🤖 Проанализировать с AI</span>
+                    <span class="btn-spinner hidden"></span>
+                </button>
+                <button id="download-pdf-btn">
+                    <span class="btn-text">📄 Скачать PDF-отчёт</span>
+                    <span class="btn-spinner hidden"></span>
+                </button>
+            </div>
+
+            <div id="charts-container">
+                <h3>Визуализация данных</h3>
+                <div id="chart-controls" class="hidden">
+                    <label for="chart-type">Тип диаграммы:</label>
+                    <select id="chart-type">
+                        <option value="bar">Гистограмма</option>
+                        <option value="line">Линейный график</option>
+                    </select>
+                    <label for="x-axis-col">Ось X:</label>
+                    <select id="x-axis-col"></select>
+                    <label for="y-axis-col">Ось Y:</label>
+                    <select id="y-axis-col"></select>
+                    <button id="generate-chart">Построить диаграмму</button>
+                </div>
+                <canvas id="myChart"></canvas>
+            </div>
+
+
+
+            <div id="ai-analysis-container" class="mt-4 hidden">
+                <h3 id="ai-analysis-title">Анализ от локальной AI</h3>
+                <div id="ai-analysis-content"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>

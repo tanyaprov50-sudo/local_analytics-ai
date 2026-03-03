@@ -1,0 +1,37 @@
+services:
+  # Backend - Flask API
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: analytics-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - OLLAMA_MODEL=gemma3:1b
+    volumes:
+      - ./uploads:/app/uploads
+    restart: unless-stopped
+    networks:
+      - analytics-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # Frontend - Nginx + статика
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: analytics-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - analytics-network
+
+networks:
+  analytics-network:
+    driver: bridge
